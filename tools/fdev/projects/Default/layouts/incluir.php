@@ -5,11 +5,12 @@
     {
         public function view($data)
         {
-            $pag = 0;
-            $[nome_model] = $data['[nome_model]'];
-            $titulo = "Inclusão de [nome_model]";
+            $pag = 0; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
+            $[nome_model] = $data['[nome_model]']; // Esta variável representa a model passada para a página
+            $titulo = "Inclusão de [nome_model]"; // Título da página
+            // Cabeçalho comum a todas as páginas
             include_once ("../views/layouts/" . $_SESSION['app_ui'] . "_cabecalho.php");
-            $this->showMessage();
+            $this->showMessage(); // Caso hajam msgs elas são mostradas ao usuário
             ?>
 
             <div class="row mt-3">
@@ -42,6 +43,7 @@
             </div>
 
             <?php
+            // Rodapé comum a todas as páginas
             include_once ("../views/layouts/" . $_SESSION['app_ui'] . "_rodape.php");
         }
     }
