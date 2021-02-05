@@ -182,7 +182,7 @@
                                                         <a <?php if ($pag == 2) echo "class='mm-active'"; ?> href="../controllers/usuarios.php"><i class="metismenu-icon"></i>Usuários</a>
                                                     </li>
                                                     <li>
-                                                        <a <?php if ($pag == 3) echo "class='mm-active'"; ?> href="../controllers/tpaquisicoes.php"><i class="metismenu-icon"></i>Tipos de aquisições</a>
+                                                        <a <?php if ($pag == 3) echo "class='mm-active'"; ?> href="../controllers/tpclasses.php"><i class="metismenu-icon"></i>Tipos de classes</a>
                                                     </li>
                                                 </ul>
                                             </li>

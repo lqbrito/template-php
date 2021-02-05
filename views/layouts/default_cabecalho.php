@@ -69,7 +69,7 @@
                         <a class="nav-link" href="../controllers/usuarios.php">Usuários</a>
                       </li>
                       <li class="nav-item <?php if ($pag == 3) echo "active" ?>">
-                        <a class="nav-link" href="../controllers/tpaquisicoes.php">Tipos de aquisições</a>
+                        <a class="nav-link" href="../controllers/tpclasses.php">Tipos de classes</a>
                       </li>
 
                       <li class='nav-item'>

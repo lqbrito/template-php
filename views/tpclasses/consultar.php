@@ -6,8 +6,8 @@
 		public function view($data)
 		{
 			$pag = 3; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
-			$tpaquisicoes = $data['tpaquisicoes']; // Esta variável representa a model passada para a página
-			$titulo = "Consulta de tipo de aquisição"; // Título da página
+			$tpclasses = $data['tpclasses']; // Esta variável representa a model passada para a página
+			$titulo = "Consulta de tipo de classe"; // Título da página
 			// Cabeçalho comum a todas as páginas
             include_once ("../views/layouts/" . $_SESSION['app_ui'] . "_cabecalho.php");
 			$this->showMessage(); // Caso hajam msgs elas são mostradas ao usuário
@@ -26,24 +26,24 @@
 			                    <div class="col-lg-12">
 			                        <dl class="row">
 			                            <dt class="col-sm-2 text-right">Descrição</dt>
-			                            <dd class="col-sm-10"><?php echo $tpaquisicoes['descricao']; ?></dd>
+			                            <dd class="col-sm-10"><?php echo $tpclasses['descricao']; ?></dd>
 			                        </dl>
 			                    </div>
                 			</div>
 
 			                <div class="btn-group">
-			                    <form action='../controllers/tpaquisicoes.php' method="post">
+			                    <form action='../controllers/tpclasses.php' method="post">
 									<input type = "hidden" name = "operacao" value = "form/alterar">
-									<input type = "hidden" name = "id" value = "<?php echo $tpaquisicoes['id'] ?>">
+									<input type = "hidden" name = "id" value = "<?php echo $tpclasses['id'] ?>">
 									<button type="submit" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i> Alterar</button>
 								</form>											                   
-			                    <form action='../controllers/tpaquisicoes.php' method="post">
+			                    <form action='../controllers/tpclasses.php' method="post">
 									<input type = "hidden" name = "operacao" value = "form/excluir">
-									<input type = "hidden" name = "id" value = "<?php echo $tpaquisicoes['id'] ?>">
+									<input type = "hidden" name = "id" value = "<?php echo $tpclasses['id'] ?>">
 									<button type="submit" class="btn btn-sm btn-primary mr-1"><i class="fas fa-trash"></i> Excluir</button>
 								</form>
 			                    
-			                    <a href="../controllers/tpaquisicoes.php" class="btn btn-sm btn-primary mr-1"><i class="fas fa-times"></i> Fechar</i></a>
+			                    <a href="../controllers/tpclasses.php" class="btn btn-sm btn-primary mr-1"><i class="fas fa-times"></i> Fechar</i></a>
 			                </div>
 						
 						</div>

@@ -1,13 +1,13 @@
 <?php
 	include_once('../parent/controller.php');
-	include_once('../models/tpaquisicoes.php');
-	include_once('../views/tpaquisicoes/listagem.php');
-	include_once('../views/tpaquisicoes/incluir.php');
-	include_once('../views/tpaquisicoes/consultar.php');
-	include_once('../views/tpaquisicoes/alterar.php');
-	include_once('../views/tpaquisicoes/excluir.php');
+	include_once('../models/tpclasses.php');
+	include_once('../views/tpclasses/listagem.php');
+	include_once('../views/tpclasses/incluir.php');
+	include_once('../views/tpclasses/consultar.php');
+	include_once('../views/tpclasses/alterar.php');
+	include_once('../views/tpclasses/excluir.php');
 	
-	class tpaquisicoesController extends Controller
+	class tpclassesController extends Controller
 	{
 		public function valida_request()
 		{
@@ -36,8 +36,6 @@
 				$this->model()->beginTransaction(); // Inicia uma transação
 				$this->model()->insert( // Insere os dados na tabela
 					[
-						'id_cli'	=> 1,
-						'id_'		=> 100,
 						'descricao'	=> $this->input['descricao'], // Utilizar sempre $this->input em vez de $_POST
 					]
 				);
@@ -86,12 +84,12 @@
 			$this->valida_token(); // Valida token para evitar ataque csrf
 			try
 			{
-				$tpaquisicoes = $this->model()->find($this->filterInput('id', 'int')); // Busca o registro na tabela
+				$tpclasses = $this->model()->find($this->filterInput('id', 'int')); // Busca o registro na tabela
 				$this->model()->beginTransaction(); // Inicia uma transação
 				$this->model()->delete(); // Exclui o registro
 				$this->model()->commit(); // Conclui a transação
 				// Cria uma mensagem de status informando que a exclusão foi realizada com sucesso
-				$_SESSION['Status'] = "Exclusão de '" . $tpaquisicoes['descricao'] . "' realizada com sucesso";
+				$_SESSION['Status'] = "Exclusão de '" . $tpclasses['descricao'] . "' realizada com sucesso";
 				return $this->rotas("form/listagem"); // Volta para a página de listagem
 			}
 			catch(Exception $e) // em caso de exceção
@@ -105,24 +103,22 @@
 		public function dadosListagem()
 		{
 			/*		
-			$this->model()->raw("SELECT id_cli, id_, descricao FROM tpaquisicoes WHERE id_cli = :id_cli ORDER BY descricao ASC", [':id_cli' => '1']);
+			$this->model()->raw("SELECT id_cli, id_, descricao FROM tpclasses WHERE id_cli = :id_cli ORDER BY descricao ASC", [':id_cli' => '1']);
 			*/
 			
 			$textobusca = $this->buscarpesquisa(); // Verifica se tem alguma string de busc informada pelo usuário
 			$listaTudo = strlen($textobusca) >= $this->tamanhoStringBusca; // Configura pra listar todos os registros quando enviar o resultado para a view
 			$count = $this->model()->count( // Obtém a quantidade de registros para esta consulta
 				[
-					["AND", "id_cli", "=", "1"],
 					["AND", "descricao", "LIKE", "%$textobusca%"] // Se houver texto de busca informado
 				]
 			);
 			if (!$listaTudo) // Se houver paginação, define página de offset e quantidade de registros
 				$this->model()->defineLimits($this->getOffset($count), $this->getTotRegs());
 			$this->model()->select( // Consulta os dados na tabela
-				["id", "id_cli", "id_", "descricao"], // Pode-se usar * em vez dos campos individuais
+				["id", "descricao"], // Pode-se usar * em vez dos campos individuais
 				// [[null]], caso não utilize a clausula WHERE
 				[
-					["AND", "id_cli", "=", "1"],
 					["AND", "descricao", "LIKE", "%$textobusca%"] // Se houver texto de busca informado
 				],
 				// [[null]], caso não utilize a clausula ORDER BY
@@ -130,31 +126,31 @@
 					["descricao", "ASC"],					
 				]
 			);
-			$tpaquisicoes = $this->model()->all(); // Obtém todos os registros consultados
+			$tpclasses = $this->model()->all(); // Obtém todos os registros consultados
 			// Retorna um array contendo todos os dados necessários para passar para a view
-			return ['tpaquisicoes' => $tpaquisicoes, 'listaTudo' => $listaTudo, 'tamanhoStringBusca' => $this->tamanhoStringBusca, 'textobusca' => $textobusca, 'pagina' => $this->getPagina($count), 'paginas' => $this->getTotPaginas($count)];			
+			return ['tpclasses' => $tpclasses, 'listaTudo' => $listaTudo, 'tamanhoStringBusca' => $this->tamanhoStringBusca, 'textobusca' => $textobusca, 'pagina' => $this->getPagina($count), 'paginas' => $this->getTotPaginas($count)];			
 		}
 
 		public function dadosIncluir()
 		{
 			if (isset($this->input))
-				return ['tpaquisicoes' => $this->input]; // Retorna os dados já digitados pelo usuário
+				return ['tpclasses' => $this->input]; // Retorna os dados já digitados pelo usuário
 			else
-				return ['tpaquisicoes' => $this->clearFields()]; // Retorna os campos vazios
+				return ['tpclasses' => $this->clearFields()]; // Retorna os campos vazios
 		}
 		
 		public function dadosAlterar()
 		{
 			if (isset($this->input))
-				return ['tpaquisicoes' => $this->input]; // Retorna os dados já digitados pelo usuário
+				return ['tpclasses' => $this->input]; // Retorna os dados já digitados pelo usuário
 			else
 				return $this->dadosconsultar(); // Consulta a tabela para obter o registro a ser alterado
 		}
 
 		public function dadosConsultar()
 		{
-			$tpaquisicoes = $this->model()->find($_POST['id']); // Consulta os dados na tabela e os retorna
-			return ['tpaquisicoes' => $tpaquisicoes];
+			$tpclasses = $this->model()->find($_POST['id']); // Consulta os dados na tabela e os retorna
+			return ['tpclasses' => $tpclasses];
 		}
 
 		public function dadosExcluir()
@@ -196,14 +192,14 @@
 		function __construct()
 		{
 			parent::__construct(); // Executa o construtor da superclasse
-			$this->model = new tpaquisicoesModel(); // Inicializa a model associada ao controller
+			$this->model = new tpclassesModel(); // Inicializa a model associada ao controller
 		}
 
 		public static function getInstance()
 		{
 	    	// Implementa o design pattern Singleton para instanciar cada classe uma única vez
 	    	if (!isset(self::$instance))
-	        	self::$instance = new tpaquisicoesController();
+	        	self::$instance = new tpclassesController();
 	    	return self::$instance;
 	    }
 	}
@@ -213,5 +209,5 @@
 	if (isset($_POST['operacao']))
 		$operacao = $_POST['operacao'];		
 	
-	$index = tpaquisicoesController::getInstance(); // Obtém a instância única desta classe
+	$index = tpclassesController::getInstance(); // Obtém a instância única desta classe
 	$index->rotas($operacao); // Executa o roteamento para saber qual método do controller executar
