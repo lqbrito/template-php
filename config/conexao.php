@@ -2,7 +2,7 @@
 	// Definições padrão para acesso ao banco de dados
 	DEFINE ('DB_SGBD', 'mysql');
 	DEFINE ('DB_HOST', 'localhost');
-	DEFINE ('DB_NAME', '_sys');
+	DEFINE ('DB_NAME', 'template_php');
 	DEFINE ('DB_USER', 'root');
 	DEFINE ('DB_PASSWORD', '');
 

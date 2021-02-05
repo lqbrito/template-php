@@ -13,6 +13,8 @@
 			$pagina = $data['pagina']; // Página atual da tabela em caso de paginação
 			$paginas = $data['paginas']; // Total de páginas da tabela em caso de paginação
 			$titulo = "Cadastro de tipos de classes"; // Título da página
+			$empresa = APP_EMPRESA;
+			$mensagem = APP_MENSAGEM;
 			$campoBusca = "uma descrição"; // Placeholder para o campo de busca na tabela
 			$controller = "tpclasses.php"; // Nome do controller para retornar da página
 			// Cabeçalho comum a todas as páginas

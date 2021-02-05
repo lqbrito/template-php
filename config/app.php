@@ -1,6 +1,8 @@
 <?php
-	//DEFINE ('APP_UI', 'default');
-	DEFINE ('APP_UI', 'architectui');
+	DEFINE ('APP_UI', 'architectui'); // default, architectui
+	DEFINE ('APP_EMPRESA', 'Nome da empresa');
+	DEFINE ('APP_MENSAGEM', 'Mensagem para o usuário.');
+	DEFINE ('APP_ICONE', 'home');
 
 	class App
 	{

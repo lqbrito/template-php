@@ -8,6 +8,8 @@
 			$pag = 3; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
 			$tpclasses = $data['tpclasses']; // Esta variável representa a model passada para a página
 			$titulo = "Exclusão de tipo de classe"; // Título da página
+			$empresa = APP_EMPRESA;
+			$mensagem = APP_MENSAGEM;
 			// Cabeçalho comum a todas as páginas
             include_once ("../views/layouts/" . $_SESSION['app_ui'] . "_cabecalho.php");
 			$this->showMessage(); // Caso hajam msgs elas são mostradas ao usuário

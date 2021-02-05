@@ -65,11 +65,27 @@
               {
                   ?>
                       </li>
-                      <li class="nav-item <?php if ($pag == 2) echo "active" ?>">
-                        <a class="nav-link" href="../controllers/usuarios.php">Usuários</a>
+                      <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fas fa-database"></i> Cadastros
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="../controllers/usuarios.php">
+                                    Usuários
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../controllers/tpclasses.php">
+                                    Tipos de classificação
+                                </a>
+                            </div>
                       </li>
-                      <li class="nav-item <?php if ($pag == 3) echo "active" ?>">
-                        <a class="nav-link" href="../controllers/tpclasses.php">Tipos de classes</a>
+                      
+                      <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fas fa-tools"></i> Ferramentas
+                            </a>
+
                       </li>
 
                       <li class='nav-item'>
