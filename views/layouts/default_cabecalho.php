@@ -114,4 +114,11 @@
   <!-- Begin page content -->
   <main role="main" class="flex-shrink-0">
     <div class="container pt-2">
-      <h2><?php echo "Nome da empresa"; ?></h2>
+      <h2>
+        <?php
+          if (isset($empresa))
+            echo $empresa;
+          else
+            echo "Nome da empresa";
+        ?>
+      </h2>
