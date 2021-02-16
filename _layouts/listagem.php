@@ -33,10 +33,10 @@
                             <div class="row">
                                 <div class="col-md-12 text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href='../public' class="btn btn-sm btn-primary mr-1"><i class="fas fa-reply"></i> Voltar</a>
+                                        <a href='../public' class="btn btn-sm btn-outline-primary mr-1"><i class="fas fa-reply"></i> Voltar</a>
                                         <form action='../controllers/[nome_model].php' method="post">
                                             <input type = "hidden" name = "operacao" value = "form/incluir">
-                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Incluir</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Incluir</button>
                                         </form>
                                     </div>
                                 </div>
