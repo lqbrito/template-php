@@ -91,13 +91,13 @@
                       <li class='nav-item'>
                         <form action='../controllers/usuarios.php' method='post'>
                           <input type = 'hidden' name = 'operacao' value = 'form/alterarsenha'>
-                          <button type = 'submit' class='btn btn-link nav-link'>Alterar senha</button>
+                          <button type = 'submit' class='btn btn-link nav-link'><i class="fas fa-database"></i> Alterar senha</button>
                         </form>
                       </li>
                       <li class='nav-item'>
                         <form action='../tools/auth.php' method='post'>
                           <input type = 'hidden' name = 'operacao' value = 'action/logout'>
-                          <button type = 'submit' class='btn btn-link nav-link'>Sair</button>
+                          <button type = 'submit' class='btn btn-link nav-link'><i class="fas fa-database"></i> Sair</button>
                         </form>
                       </li>
                       <li class="nav-item">
