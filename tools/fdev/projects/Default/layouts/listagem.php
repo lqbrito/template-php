@@ -26,7 +26,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="col-md-9 text-right">
+                            <div class="col-md-9">
                                 <?php echo $titulo; ?>
                             </div>
                             <div class="col-md-3 text-right">
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="table-responsive mt-3">
+                            <div class="table-responsive">
                                 <table class="table table-striped table-hover table-sm table-condensed">
                                     <thead class="thead-dark">
                                         <tr>
