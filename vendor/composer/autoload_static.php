@@ -20,11 +20,27 @@ class ComposerStaticInit970dfcb33a6ee98c0687730994b34e6e
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Slim' => 
+            array (
+                0 => __DIR__ . '/..' . '/slim/slim',
+            ),
+        ),
+    );
+
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit970dfcb33a6ee98c0687730994b34e6e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit970dfcb33a6ee98c0687730994b34e6e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit970dfcb33a6ee98c0687730994b34e6e::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit970dfcb33a6ee98c0687730994b34e6e::$classMap;
 
         }, null, ClassLoader::class);
     }
