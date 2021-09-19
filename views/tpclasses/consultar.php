@@ -1,7 +1,7 @@
 <?php
-	include_once('../parent/view.php');
+	include_once('../parent/View.php');
 
-	class consultarView extends View
+	class ConsultarView extends View
 	{
 		public function view($data)
 		{
@@ -34,7 +34,7 @@
                 			</div>
 
 			                <div class="btn-group">
-			                    <form action='../controllers/tpclasses.php' method="post">
+			                    <form action='../controllers/Tpclasses.php' method="post">
 									<input type = "hidden" name = "operacao" value = "form/alterar">
 									<input type = "hidden" name = "id" value = "<?php echo $tpclasses['id'] ?>">
 									<button type="submit" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i> Alterar</button>
@@ -45,7 +45,7 @@
 									<button type="submit" class="btn btn-sm btn-primary mr-1"><i class="fas fa-trash"></i> Excluir</button>
 								</form>
 			                    
-			                    <a href="../controllers/tpclasses.php" class="btn btn-sm btn-primary mr-1"><i class="fas fa-times"></i> Fechar</i></a>
+			                    <a href="../controllers/Tpclasses.php" class="btn btn-sm btn-primary mr-1"><i class="fas fa-times"></i> Fechar</i></a>
 			                </div>
 						
 						</div>

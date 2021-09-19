@@ -1,5 +1,5 @@
 <?php
-    include_once('../parent/view.php');
+    include_once('../parent/View.php');
 
     class alterarView extends View
     {

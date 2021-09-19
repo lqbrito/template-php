@@ -101,8 +101,8 @@
                                                         </a>
                                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right p-2">
                                                             <button type="button" tabindex="0" class="dropdown-item">Meu cadastro</button>
-                                                            <form action='../controllers/usuarios.php' method='post'>
-                                                              <input type = 'hidden' name = 'operacao' value = 'form/alterarsenha'>
+                                                            <form action='../controllers/Usuarios.php' method='post'>
+                                                              <input type = 'hidden' name = 'operacao' value = 'form/alterarSenha'>
                                                               <button type = 'submit' tabindex="0" class="dropdown-item">Alterar senha</button>
                                                             </form>
                                                             <button type="button" tabindex="0" class="dropdown-item">Trocar foto</button>
@@ -179,10 +179,10 @@
                                                 </a>
                                                 <ul <?php if (in_array($pag, [2,3])) echo "class='mm-show'"; ?>>
                                                     <li>
-                                                        <a <?php if ($pag == 2) echo "class='mm-active'"; ?> href="../controllers/usuarios.php"><i class="metismenu-icon"></i>Usuários</a>
+                                                        <a <?php if ($pag == 2) echo "class='mm-active'"; ?> href="../controllers/Usuarios.php"><i class="metismenu-icon"></i>Usuários</a>
                                                     </li>
                                                     <li>
-                                                        <a <?php if ($pag == 3) echo "class='mm-active'"; ?> href="../controllers/tpclasses.php"><i class="metismenu-icon"></i>Tipos de classes</a>
+                                                        <a <?php if ($pag == 3) echo "class='mm-active'"; ?> href="../controllers/Tpclasses.php"><i class="metismenu-icon"></i>Tipos de classes</a>
                                                     </li>
                                                 </ul>
                                             </li>

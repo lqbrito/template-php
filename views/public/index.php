@@ -1,7 +1,7 @@
 <?php
-	include_once('../parent/view.php');
+	include_once('../parent/View.php');
 
-	class indexView extends View
+	class IndexView extends View
 	{
 		public function view($data)
 		{

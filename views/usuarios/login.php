@@ -1,7 +1,7 @@
 <?php
-	include_once('../parent/view.php');
+	include_once('../parent/View.php');
 
-	class loginView extends View
+	class LoginView extends View
 	{
 		public function view($data)
 		{
@@ -23,7 +23,7 @@
 
 						<div class="card-body">
 						
-							<form action='../controllers/usuarios.php' method="post">
+							<form action='../controllers/Usuarios.php' method="post">
 								<input type = "hidden" name = "operacao" value = "action/login">
 								<input type = "hidden" name = "csrf" value = "<?php echo $this->csrf()?>">
 								
@@ -41,7 +41,7 @@
 			                    <div class="row">
 			                    	<div class="col-12">
 			                    		<button type="submit" class="btn btn-primary"><i class="fas fa-door-open"></i> Entrar</button>
-			                    		<a href="../public/index.php" class="btn btn-light" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
+			                    		<a href="../public/Index.php" class="btn btn-light" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
 			                    	</div>
 			                    </div>
 			                </form>

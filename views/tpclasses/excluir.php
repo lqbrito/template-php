@@ -1,7 +1,7 @@
 <?php
-	include_once('../parent/view.php');
+	include_once('../parent/View.php');
 
-	class excluirView extends View
+	class ExcluirView extends View
 	{
 		public function view($data)
 		{
@@ -33,7 +33,7 @@
 			                    </div>
                 			</div>
 
-                			<form action='../controllers/tpclasses.php' method="post">
+                			<form action='../controllers/Tpclasses.php' method="post">
 
                 				<input type = "hidden" name = "operacao" value = "action/excluir">
                 				<input type = "hidden" name = "id" value = "<?php echo $tpclasses['id']; ?>">
@@ -42,7 +42,7 @@
                 				<div class="row">
                 					<div class="col-12">
                 						<button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</button>
-                						<a href="../controllers/tpclasses.php" class="btn btn-default" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
+                						<a href="../controllers/Tpclasses.php" class="btn btn-default" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
                 					</div>
                 				</div>
 

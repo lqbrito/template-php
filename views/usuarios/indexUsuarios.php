@@ -1,7 +1,7 @@
 <?php
-include_once('../parent/view.php');
+include_once('../parent/View.php');
 
-class listagemView extends View
+class IndexUsuariosView extends View
 {
 	public function view($data)
 	{
@@ -16,7 +16,7 @@ class listagemView extends View
 			$empresa = APP_EMPRESA;
 			$mensagem = APP_MENSAGEM;
 			$campoBusca = "um nome"; // Placeholder para o campo de busca na tabela
-			$controller = "usuarios.php"; // Nome do controller para retornar da página
+			$controller = "Usuarios.php"; // Nome do controller para retornar da página
 			// Cabeçalho comum a todas as páginas
 			include_once ("../views/layouts/" . $_SESSION['app_ui'] . "_cabecalho.php");
 			$this->showMessage(); // Caso hajam msgs elas são mostradas ao usuário
@@ -32,7 +32,7 @@ class listagemView extends View
 							<div class="col-md-3 text-right">
 								<div class="btn-group" role="group" aria-label="Basic example">
 									<a href='../public' class="btn btn-sm btn-outline-primary mr-1 float-right"><i class="fas fa-reply"></i> Voltar</a>
-									<form action='../controllers/usuarios.php' method="post">
+									<form action='../controllers/Usuarios.php' method="post">
 										<input type = "hidden" name = "operacao" value = "form/incluir">
 										<button type="submit" class="btn btn-sm btn-outline-primary float-right"><i class="fas fa-plus"></i> Incluir</button>
 									</form>
@@ -61,17 +61,17 @@ class listagemView extends View
 												<td><?php echo $tp['login']; ?></td>
 												<td>
 													<div class="btn-group">
-														<form action='../controllers/usuarios.php' method="post">
+														<form action='../controllers/Usuarios.php' method="post">
 															<input type = "hidden" name = "operacao" value = "form/consultar">
 															<input type = "hidden" name = "id" value = "<?php echo $tp['id'] ?>">
 															<button type="submit" class="btn btn-sm btn-link"><i class="fas fa-search"></i> Consultar</button>
 														</form>
-														<form action='../controllers/usuarios.php' method="post">
+														<form action='../controllers/Usuarios.php' method="post">
 															<input type = "hidden" name = "operacao" value = "form/alterar">
 															<input type = "hidden" name = "id" value = "<?php echo $tp['id'] ?>">
 															<button type="submit" class="btn btn-sm btn-link"><i class="fas fa-edit"></i> Alterar</button>
 														</form>
-														<form action='../controllers/usuarios.php' method="post">
+														<form action='../controllers/Usuarios.php' method="post">
 															<input type = "hidden" name = "operacao" value = "form/excluir">
 															<input type = "hidden" name = "id" value = "<?php echo $tp['id'] ?>">
 															<button type="submit" class="btn btn-sm btn-link"><i class="fas fa-trash"></i> Excluir</button>

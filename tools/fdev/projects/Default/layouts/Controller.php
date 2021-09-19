@@ -1,5 +1,5 @@
 <?php
-	include_once('../parent/controller.php');
+	include_once('../parent/Controller.php');
 	include_once('../models/[nome_model].php');
 	include_once('../views/[nome_model]/listagem.php');
 	include_once('../views/[nome_model]/incluir.php');
@@ -35,7 +35,7 @@
 				$this->model()->commit(); // Conclui a transação
 				// Cria uma mensagem de status informando que a inclusão foi realizada com sucesso
 				$_SESSION['Status'] = "Inclusão de '" . $this->input['descricao'] . "' realizada com sucesso";
-				return $this->rotas("form/listagem"); // Volta para a página de listagem
+				return $this->rotas("form/index"); // Volta para a página de listagem
 			}
 			catch(Exception $e) // em caso de exceção
 			{
@@ -62,7 +62,7 @@
 				$this->model()->commit(); // Conclui a transação
 				// Cria uma mensagem de status informando que a alteração foi realizada com sucesso
 				$_SESSION['Status'] = "Alteração de '" . $this->input['descricao'] . "' realizada com sucesso";
-				return $this->rotas("form/listagem"); // Volta para a página de listagem
+				return $this->rotas("form/index"); // Volta para a página de listagem
 			}
 			catch(Exception $e) // em caso de exceção
 			{
@@ -83,7 +83,7 @@
 				$this->model()->commit(); // Conclui a transação
 				// Cria uma mensagem de status informando que a exclusão foi realizada com sucesso
 				$_SESSION['Status'] = "Exclusão de '" . $[nome_model]['descricao'] . "' realizada com sucesso";
-				return $this->rotas("form/listagem"); // Volta para a página de listagem
+				return $this->rotas("form/index"); // Volta para a página de listagem
 			}
 			catch(Exception $e) // em caso de exceção
 			{
@@ -156,7 +156,7 @@
 				return parent::rotas('form/login'); // Vai para o formulário de login
 
 			// Rotas de formulários
-			if ($rota == 'form/listagem')
+			if ($rota == 'form/index')
 				return new listagemView($this->dadosListagem());
 			if ($rota == 'form/incluir')
 				return new incluirView($this->dadosIncluir());
@@ -196,8 +196,8 @@
 	    }
 	}
 
-	// Caso não seja informada uma rota, define form/listagem como a rota padrão a ser executada para este script
-	$operacao = 'form/listagem';
+	// Caso não seja informada uma rota, define form/index como a rota padrão a ser executada para este script
+	$operacao = 'form/index';
 	if (isset($_POST['operacao']))
 		$operacao = $_POST['operacao'];		
 	

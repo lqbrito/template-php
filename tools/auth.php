@@ -1,7 +1,7 @@
 <?php
-	include_once('../parent/controller.php');
+	include_once('../parent/Controller.php');
 	
-	class authController extends Controller
+	class AuthController extends Controller
 	{
 		public function finalizaSessao()
 	    {
@@ -26,7 +26,7 @@
 		{
 	    	// Implementa o design pattern Singleton para instanciar cada classe uma única vez
 	    	if (!isset(self::$instance))
-	        	self::$instance = new authController();
+	        	self::$instance = new AuthController();
 	    	return self::$instance;
 	    }
 	}
@@ -39,5 +39,5 @@
 	if (isset($_POST['operacao']))
 		$operacao = $_POST['operacao'];		
 	
-	$index = authController::getInstance(); // Obtém a instância da classe usando o Singleton
+	$index = AuthController::getInstance(); // Obtém a instância da classe usando o Singleton
 	$index->rotas($operacao);

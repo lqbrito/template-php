@@ -71,11 +71,11 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="../controllers/usuarios.php">
+                                <a class="dropdown-item" href="../controllers/Usuarios.php">
                                     Usuários
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../controllers/tpclasses.php">
+                                <a class="dropdown-item" href="../controllers/Tpclasses.php">
                                     Tipos de classificação
                                 </a>
                             </div>
@@ -89,8 +89,8 @@
                       </li>
 
                       <li class='nav-item'>
-                        <form action='../controllers/usuarios.php' method='post'>
-                          <input type = 'hidden' name = 'operacao' value = 'form/alterarsenha'>
+                        <form action='../controllers/Usuarios.php' method='post'>
+                          <input type = 'hidden' name = 'operacao' value = 'form/alterarSenha'>
                           <button type = 'submit' class='btn btn-link nav-link'><i class="fas fa-database"></i> Alterar senha</button>
                         </form>
                       </li>

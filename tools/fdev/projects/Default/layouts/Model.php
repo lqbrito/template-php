@@ -1,5 +1,5 @@
 <?php
-	include_once('../parent/model.php');
+	include_once('../parent/Model.php');
 
     class [nome_model]Model extends Model
     {
