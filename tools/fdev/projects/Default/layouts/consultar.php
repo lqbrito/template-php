@@ -1,7 +1,7 @@
 <?php
     include_once('../parent/View.php');
 
-    class consultarView extends View
+    class ConsultarView extends View
     {
         public function view($data)
         {
@@ -33,18 +33,18 @@
                             </div>
 
                             <div class="btn-group">
-                                <form action='../controllers/[nome_controller].php' method="post">
+                                <form action='../controllers/[nome_classe_controller].php' method="post">
                                     <input type = "hidden" name = "operacao" value = "form/alterar">
                                     <input type = "hidden" name = "id" value = "<?php echo $[nome_model]['id'] ?>">
                                     <button type="submit" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i> Alterar</button>
                                 </form>                                                            
-                                <form action='../controllers/[nome_controller].php' method="post">
+                                <form action='../controllers/[nome_classe_controller].php' method="post">
                                     <input type = "hidden" name = "operacao" value = "form/excluir">
                                     <input type = "hidden" name = "id" value = "<?php echo $[nome_model]['id'] ?>">
                                     <button type="submit" class="btn btn-sm btn-primary mr-1"><i class="fas fa-trash"></i> Excluir</button>
                                 </form>
                                 
-                                <a href="../controllers/[nome_controller].php" class="btn btn-sm btn-primary mr-1"><i class="fas fa-times"></i> Fechar</i></a>
+                                <a href="../controllers/[nome_classe_controller].php" class="btn btn-sm btn-primary mr-1"><i class="fas fa-times"></i> Fechar</i></a>
                             </div>
                         
                         </div>

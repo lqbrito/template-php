@@ -1,13 +1,13 @@
 <?php
 	include_once('../parent/Service.php');
-	include_once('../models/Tpclasses.php');
+	include_once('../models/[nome_classe_model].php');
 	
-	class TpclassesService extends Service
+	class [nome_classe_service]Service extends Service
 	{
 		function __construct()
 		{
 			parent::__construct(); // Executa o construtor da superclasse
-			$this->model = new TpclassesModel(); // Inicializa a model associada ao serviço
+			$this->model = new [nome_classe_model]Model(); // Inicializa a model associada ao serviço
 		}
 
 		public function valida_request()
@@ -37,7 +37,7 @@
 				$this->model()->beginTransaction(); // Inicia uma transação
 				$this->model()->insert( // Insere os dados na tabela
 					[
-						'descricao'	=> $this->input['descricao'],
+						[nome_campo]
 					]
 				);
 				$this->model()->commit(); // Conclui a transação
@@ -64,7 +64,7 @@
 				$this->model()->beginTransaction(); // Inicia uma transação
 				$this->model()->update( // Altera os dados da tabela
 					[	// Utilizar sempre $this->input em vez de $_POST
-						'descricao'	=> $this->input['descricao'],
+						[nome_campo]
 					]
 				);
 				$this->model()->commit(); // Conclui a transação
@@ -85,12 +85,12 @@
 			$this->valida_token(); // Valida token para evitar ataque csrf
 			try
 			{
-				$tpclasses = $this->model()->find($this->filterInput('id', 'int')); // Busca o registro na tabela
+				$[nome_model] = $this->model()->find($this->filterInput('id', 'int')); // Busca o registro na tabela
 				$this->model()->beginTransaction(); // Inicia uma transação
 				$this->model()->delete(); // Exclui o registro
 				$this->model()->commit(); // Conclui a transação
 				// Cria uma mensagem de status informando que a exclusão foi realizada com sucesso
-				$_SESSION['Status'] = "Exclusão de '" . $tpclasses['descricao'] . "' realizada com sucesso";
+				$_SESSION['Status'] = "Exclusão de '" . $[nome_model]['descricao'] . "' realizada com sucesso";
 				return true;
 			}
 			catch(Exception $e) // em caso de exceção
@@ -110,6 +110,7 @@
 				$listaTudo = strlen($textobusca) >= $this->tamanhoStringBusca; // Configura pra listar todos os registros quando enviar o resultado para a view
 				$count = $this->model()->count( // Obtém a quantidade de registros para esta consulta
 					[
+						["AND", "", "=", ""], // Informar um campo ou remover esta linha
 						["AND", "descricao", "LIKE", "%$textobusca%"] // Se houver texto de busca informado
 					]
 				);
@@ -122,6 +123,7 @@
 
 					// [[null]], caso não utilize a clausula WHERE
 					[
+						["AND", "", "=", ""],
 						["AND", "descricao", "LIKE", "%$textobusca%"] // Se houver texto de busca informado
 					],
 
@@ -131,37 +133,37 @@
 					]
 				);
 							
-				$tpclasses = $this->model()->all(); // Obtém todos os registros consultados
+				$[nome_model] = $this->model()->all(); // Obtém todos os registros consultados
 			}
 			catch (Exception $e) // em caso de exceção
 			{
-				$tpclasses = null;
+				$[nome_model] = null;
 			}
 			
 			// Retorna um array contendo todos os dados necessários para passar para a view
-			return ['tpclasses' => $tpclasses, 'listaTudo' => $listaTudo, 'tamanhoStringBusca' => $this->tamanhoStringBusca, 'textobusca' => $textobusca, 'pagina' => $this->getPagina($count), 'paginas' => $this->getTotPaginas($count)];			
+			return ['[nome_model]' => $[nome_model], 'listaTudo' => $listaTudo, 'tamanhoStringBusca' => $this->tamanhoStringBusca, 'textobusca' => $textobusca, 'pagina' => $this->getPagina($count), 'paginas' => $this->getTotPaginas($count)];			
 		}
 
 		public function dadosIncluir()
 		{
 			if (isset($this->input))
-				return ['tpclasses' => $this->input]; // Retorna os dados já digitados pelo usuário
+				return ['[nome_model]' => $this->input]; // Retorna os dados já digitados pelo usuário
 			else
-				return ['tpclasses' => $this->clearFields()]; // Retorna os campos vazios
+				return ['[nome_model]' => $this->clearFields()]; // Retorna os campos vazios
 		}
 		
 		public function dadosAlterar()
 		{
 			if (isset($this->input))
-				return ['tpclasses' => $this->input]; // Retorna os dados já digitados pelo usuário
+				return ['[nome_model]' => $this->input]; // Retorna os dados já digitados pelo usuário
 			else
 				return $this->dadosconsultar(); // Consulta a tabela para obter o registro a ser alterado
 		}
 
 		public function dadosConsultar()
 		{
-			$tpclasses = $this->model()->find($_POST['id']); // Consulta os dados na tabela e os retorna
-			return ['tpclasses' => $tpclasses];
+			$[nome_model] = $this->model()->find($_POST['id']); // Consulta os dados na tabela e os retorna
+			return ['[nome_model]' => $[nome_model]];
 		}
 
 		public function dadosExcluir()

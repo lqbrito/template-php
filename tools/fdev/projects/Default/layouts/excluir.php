@@ -1,7 +1,7 @@
 <?php
     include_once('../parent/View.php');
 
-    class excluirView extends View
+    class ExcluirView extends View
     {
         public function view($data)
         {
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
 
-                            <form action='../controllers/[nome_controller].php' method="post">
+                            <form action='../controllers/[nome_classe_controller].php' method="post">
 
                                 <input type = "hidden" name = "operacao" value = "action/excluir">
                                 <input type = "hidden" name = "id" value = "<?php echo $[nome_model]['id']; ?>">
@@ -41,7 +41,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</button>
-                                        <a href="../controllers/[nome_controller].php" class="btn btn-default" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
+                                        <a href="../controllers/[nome_classe_controller].php" class="btn btn-default" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
                                     </div>
                                 </div>
 

@@ -114,6 +114,19 @@
 									echo "</ol>";
 	  							}
 	  							else
+	  							if ($tp == 'services')
+	  							{
+	  								echo "<ol class = 'list-unstyled'>";
+	  								$diretorio = dir($estrutura);
+
+									while ($arquivo = $diretorio->read())
+										if ($arquivo != '.' && $arquivo != '..')
+										echo "<li>$arquivo</li>";					
+									
+									$diretorio->close();
+									echo "</ol>";
+	  							}
+	  							else
 	  								if ($tp == 'controllers')
 									{
 										$subpastas = scandir($estrutura);

@@ -16,13 +16,12 @@
 			$validado = true;
 			
 			// Utilizar sempre $this->input nas validações em vez de $_POST
-			/* Exemplo de validação de campo
+			// Se não houver nenhuma validação, remova a condição de exemplo abaixo
 			if ($this->input['campo'] == "Valor qualquer" || $this->input['campo'] == "Valor qualquer")
 			{
 				$_SESSION ['Erros'] [] = "Mensagem de erro";
 				$validado = false;
 			}
-			*/
 
 			return $validado;
 		}
@@ -103,13 +102,14 @@
 
 		public function dadosIndex()
 		{
-			$count = 0;
+			$count = 0;			
 			try
 			{
 				$textobusca = $this->buscarpesquisa(); // Verifica se tem alguma string de busca informada pelo usuário
 				$listaTudo = strlen($textobusca) >= $this->tamanhoStringBusca; // Configura pra listar todos os registros quando enviar o resultado para a view
 				$count = $this->model()->count( // Obtém a quantidade de registros para esta consulta
 					[
+						["AND", "", "=", ""], // Informar um campo ou remover esta linha
 						["AND", "descricao", "LIKE", "%$textobusca%"] // Se houver texto de busca informado
 					]
 				);
@@ -122,6 +122,7 @@
 
 					// [[null]], caso não utilize a clausula WHERE
 					[
+						["AND", "", "=", ""],
 						["AND", "descricao", "LIKE", "%$textobusca%"] // Se houver texto de busca informado
 					],
 

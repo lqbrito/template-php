@@ -5,7 +5,7 @@
     {
         public function view($data)
         {
-            $pag = 3; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
+            $pag = 0; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
             $tpclasses = $data['tpclasses']; // Esta variável representa a model passada para a página
             $titulo = "Consulta de tpclasses"; // Título da página
             $empresa = APP_EMPRESA;

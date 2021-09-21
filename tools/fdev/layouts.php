@@ -163,8 +163,9 @@
 			  	<nav>
 			  		<div class="nav nav-tabs" id="nav-tab" role="tablist">
 			  			<a class="nav-link active" id="nav-01-tab" data-toggle="tab" href="#nav-01" role="tab" aria-controls="nav-01" aria-selected="true">Controller</a>
+			  			<a class="nav-link" id="nav-08-tab" data-toggle="tab" href="#nav-08" role="tab" aria-controls="nav-08" aria-selected="false">Service</a>
 			  			<a class="nav-link" id="nav-02-tab" data-toggle="tab" href="#nav-02" role="tab" aria-controls="nav-02" aria-selected="false">Model</a>
-			  			<a class="nav-link" id="nav-03-tab" data-toggle="tab" href="#nav-03" role="tab" aria-controls="nav-03" aria-selected="false">Listagem</a>
+			  			<a class="nav-link" id="nav-03-tab" data-toggle="tab" href="#nav-03" role="tab" aria-controls="nav-03" aria-selected="false">Index</a>
 			  			<a class="nav-link" id="nav-04-tab" data-toggle="tab" href="#nav-04" role="tab" aria-controls="nav-04" aria-selected="false">Incluir</a>
 			  			<a class="nav-link" id="nav-05-tab" data-toggle="tab" href="#nav-05" role="tab" aria-controls="nav-05" aria-selected="false">Consultar</a>
 			  			<a class="nav-link" id="nav-06-tab" data-toggle="tab" href="#nav-06" role="tab" aria-controls="nav-06" aria-selected="false">Alterar</a>
@@ -176,8 +177,25 @@
 			  			<br>
 			  			<ul>
 				  			<li>[namespace] - Representa a namespace do controller e das views</li>
-				  			<li>[nome_controller] - Representa o nome do arquivo e da classe controller</li>
-				  			<li>[nome_model] - Representa o nome do arquivo e da classe model</li>
+				  			<li>[nome_classe_controller] - Representa o nome do arquivo e da classe controller</li>
+				  			<li>[nome_classe_service] - Representa o nome do arquivo e da classe de serviços</li>
+				  			<li>[nome_classe_model] - Representa o nome do arquivo e da classe model</li>
+				  			<li>[nome_controller] - Representa o nome do objeto instanciado da classe controller</li>
+				  			<li>[nome_service] - Representa o nome do objeto instanciado da classe de serviços</li>
+				  			<li>[nome_model] - Representa o nome do objeto instanciado da classe model</li>
+				  			<li>[nome_campo] - Representa o local onde será feita a atribuição dos dados de uma requisição para o controller nas operações de inclusão e alteração</li>
+			  			<ul>
+			  		</div>
+			  		<div class="tab-pane fade" id="nav-08" role="tabpanel" aria-labelledby="nav-08-tab">
+			  			<br>
+			  			<ul>
+				  			<li>[namespace] - Representa a namespace do controller e das views</li>
+				  			<li>[nome_classe_controller] - Representa o nome do arquivo e da classe controller</li>
+				  			<li>[nome_classe_service] - Representa o nome do arquivo e da classe de serviços</li>
+				  			<li>[nome_classe_model] - Representa o nome do arquivo e da classe model</li>
+				  			<li>[nome_controller] - Representa o nome do objeto instanciado da classe controller</li>
+				  			<li>[nome_service] - Representa o nome do objeto instanciado da classe de serviços</li>
+				  			<li>[nome_model] - Representa o nome do objeto instanciado da classe model</li>
 				  			<li>[nome_campo] - Representa o local onde será feita a atribuição dos dados de uma requisição para o controller nas operações de inclusão e alteração</li>
 			  			<ul>
 			  		</div>

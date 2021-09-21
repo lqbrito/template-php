@@ -1,6 +1,6 @@
 <?php 
 	$conn = null;
-	include_once("../../config/conexao.php");
+	include_once("../../config/Connect.php");
  	$_SESSION['project-lite'] = 'Default';
 	$_SESSION['servername'] = DB_HOST;
 	$_SESSION['databasename'] = DB_NAME;

@@ -6,8 +6,8 @@
         public function view($data)
         {
             $pag = 0; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
-            $[nome_model] = $data['[nome_model]']; // Esta variável representa a model passada para a página
-            $titulo = "Inclusão de [nome_model]"; // Título da página
+            $tpclasses = $data['tpclasses']; // Esta variável representa a model passada para a página
+            $titulo = "Inclusão de tpclasses"; // Título da página
             $empresa = APP_EMPRESA;
             $mensagem = APP_MENSAGEM;
             // Cabeçalho comum a todas as páginas
@@ -24,16 +24,21 @@
 
                         <div class="card-body">
                         
-                            <form action='../controllers/[nome_classe_controller].php' method="post">
+                            <form action='../controllers/Tpclasses.php' method="post">
                                 <input type = "hidden" name = "operacao" value = "action/incluir">
                                 <input type = "hidden" name = "csrf" value = "<?php echo $this->csrf()?>">
                                 
-                                [nome_campo]
+                                <div class='row'>
+                                	<div class='form-group col-6'>
+                                		<label class='bmd-label-floating' for='descricao'>descricao</label>
+                                		<input type='text' class='form-control' id='descricao' name='descricao' maxlength='50' required='true' autofocus value="<?php echo $tpclasses['descricao']; ?>">
+                                	</div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>
-                                        <a href="../controllers/[nome_classe_controller].php" class="btn btn-light" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
+                                        <a href="../controllers/Tpclasses.php" class="btn btn-light" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
                                     </div>
                                 </div>
                             </form>
