@@ -48,10 +48,11 @@
 <body class="d-flex flex-column h-100">
   <header>
     <!-- Fixed navbar -->
-    <!--nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm"-->
-    <!--nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm"-->
-    <!--nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm"-->
-    <!--nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"-->
+    <!--<nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">-->
+    <!--<nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">-->
+    <!--<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">-->
+    <!--<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">-->
+    <!--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">-->
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
       <a class="navbar-brand" href="../public">Nome da aplicação</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +65,6 @@
               if ($_SESSION['logged'] == true)
               {
                   ?>
-                      </li>
                       <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i class="fas fa-database"></i> Cadastros
@@ -81,25 +81,26 @@
                             </div>
                       </li>
                       
-                      <li class="nav-item dropdown">
+                      <li class="nav-item dropdown ml-3">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i class="fas fa-tools"></i> Ferramentas
                             </a>
 
                       </li>
 
-                      <li class='nav-item'>
+                      <li class='nav-item ml-3'>
                         <form action='../controllers/Usuarios.php' method='post'>
                           <input type = 'hidden' name = 'operacao' value = 'form/alterarSenha'>
-                          <button type = 'submit' class='btn btn-link nav-link'><i class="fas fa-database"></i> Alterar senha</button>
+                          <button type = 'submit' class='btn btn-link nav-link'><i class="fas fa-key"></i> Alterar senha</button>
                         </form>
                       </li>
-                      <li class='nav-item'>
+                      <li class='nav-item ml-3'>
                         <form action='../tools/auth.php' method='post'>
                           <input type = 'hidden' name = 'operacao' value = 'action/logout'>
-                          <button type = 'submit' class='btn btn-link nav-link'><i class="fas fa-database"></i> Sair</button>
+                          <button type = 'submit' class='btn btn-link nav-link'><strong><i class="fas fa-power-off"></i> Sair</strong></button>
                         </form>
                       </li>
+
                       <li class="nav-item">
                       <?php
                         if(isset($campoBusca))
@@ -118,7 +119,8 @@
                             <?php
                           }
                       ?>
-                      
+                      </li>
+
                   <?php
               }          
           ?>          
