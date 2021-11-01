@@ -1,13 +1,13 @@
 <?php
 	include_once('../parent/Service.php');
-	include_once('../models/Usuarios.php');
+	include_once('../domains/Usuarios.php');
 	
 	class usuariosService extends Service
 	{
 		function __construct()
 		{
 			parent::__construct(); // Executa o construtor da superclasse
-			$this->model = new UsuariosModel(); // Inicializa a model associada ao serviço
+			$this->model = new UsuariosDomain(); // Inicializa a model associada ao serviço
 		}
 
 		public function valida_request()

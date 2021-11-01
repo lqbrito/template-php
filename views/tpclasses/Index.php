@@ -5,7 +5,7 @@
     {
         public function view($data)
         {
-            $pag = 3; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
+            $pag = 0; // Use esta numeração para representar o crud atual e indicar sua opção de menu como ativa
             $tpclasses = $data['tpclasses']; // Esta variável representa a model passada para a página
             $listaTudo = $data['listaTudo']; // Indica se é para listar todos os registros da tabela
             $tamanhoStringBusca = $data['tamanhoStringBusca']; //Tamanho mínimo da string de busca

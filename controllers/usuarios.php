@@ -7,7 +7,7 @@
 	include_once('../views/usuarios/alterar.php');
 	include_once('../views/usuarios/excluir.php');
 	include_once('../views/usuarios/alterarsenha.php');
-	include_once('../views/public/Index.php');
+	include_once('../views/site/Index.php');
 	
 	class UsuariosController extends Controller
 	{

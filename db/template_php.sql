@@ -54,6 +54,7 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
+-- A senha do usuário Admin é troquesuasenha
 INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`, `created_at`, `updated_at`) VALUES
 (1, 'Administrador', 'Admin', '82EEDEE9DCB6D9859C1233B74F6602780D4D3EF11C48E1D9633644F73A45AB8E', '2021-02-05 18:14:58', '2021-02-05 18:14:58');
 

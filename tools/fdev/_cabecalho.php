@@ -65,7 +65,7 @@
             <a class="nav-link" href="scripts.php">Scripts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../public">Sair</a>
+            <a class="nav-link" href="../../site">Sair</a>
           </li>
         </ul>
       </div>

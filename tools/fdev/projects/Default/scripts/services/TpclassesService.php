@@ -1,13 +1,13 @@
 <?php
 	include_once('../parent/Service.php');
-	include_once('../models/Tpclasses.php');
+	include_once('../domains/Tpclasses.php');
 	
 	class TpclassesService extends Service
 	{
 		function __construct()
 		{
 			parent::__construct(); // Executa o construtor da superclasse
-			$this->model = new TpclassesModel(); // Inicializa a model associada ao serviço
+			$this->model = new TpclassesDomain(); // Inicializa a model associada ao serviço
 		}
 
 		public function valida_request()
@@ -16,12 +16,13 @@
 			$validado = true;
 			
 			// Utilizar sempre $this->input nas validações em vez de $_POST
-			// Se não houver nenhuma validação, remova a condição de exemplo abaixo
+			/* Exemplo de validação de campo
 			if ($this->input['campo'] == "Valor qualquer" || $this->input['campo'] == "Valor qualquer")
 			{
 				$_SESSION ['Erros'] [] = "Mensagem de erro";
 				$validado = false;
 			}
+			*/
 
 			return $validado;
 		}
@@ -102,7 +103,7 @@
 
 		public function dadosIndex()
 		{
-			$count = 0;			
+			$count = 0;
 			try
 			{
 				$textobusca = $this->buscarpesquisa(); // Verifica se tem alguma string de busca informada pelo usuário

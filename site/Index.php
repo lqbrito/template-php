@@ -1,6 +1,6 @@
 <?php
 	include_once('../parent/Controller.php');
-	include_once('../views/public/index.php');
+	include_once('../views/site/index.php');
 	
 	class IndexController extends Controller
 	{
@@ -9,7 +9,7 @@
 			if (!$this->validaSessao($rota)) // Se o usuário não está logado
 				return parent::rotas('form/login'); // Redireciona para a página de login
 
-			return new IndexView(); // Inicia a página index da pasta public
+			return new IndexView(); // Inicia a página index da pasta site
 		}
 
 		public static function getInstance()

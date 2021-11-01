@@ -1,13 +1,13 @@
 <?php
 	include_once('../parent/Service.php');
-	include_once('../models/Tpclasses.php');
+	include_once('../domains/Tpclasses.php');
 	
 	class TpclassesService extends Service
 	{
 		function __construct()
 		{
 			parent::__construct(); // Executa o construtor da superclasse
-			$this->model = new TpclassesModel(); // Inicializa a model associada ao serviço
+			$this->model = new TpclassesDomain(); // Inicializa a model associada ao serviço
 		}
 
 		public function valida_request()

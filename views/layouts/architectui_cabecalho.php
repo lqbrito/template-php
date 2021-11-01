@@ -28,7 +28,7 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <a href="../public"><div class="logo-src"></div></a>
+                <a href="../site"><div class="logo-src"></div></a>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -198,7 +198,7 @@
                                             </li>
                                             <li class="app-sidebar__heading">Mais opções</li>
                                             <li>
-                                                <a href="../tools/auth.php"><i class="metismenu-icon pe-7s-power"></i>Sair</a>
+                                                <a href="../tools/Auth.php"><i class="metismenu-icon pe-7s-power"></i>Sair</a>
                                             </li>
                                     </div>
                                 </div>
