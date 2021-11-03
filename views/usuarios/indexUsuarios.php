@@ -31,7 +31,7 @@ class IndexUsuariosView extends View
 							</div>
 							<div class="col-md-3 text-right">
 								<div class="btn-group" role="group" aria-label="Basic example">
-									<a href='../public' class="btn btn-sm btn-outline-primary mr-1 float-right"><i class="fas fa-reply"></i> Voltar</a>
+									<a href='../site' class="btn btn-sm btn-outline-primary mr-1 float-right"><i class="fas fa-reply"></i> Voltar</a>
 									<form action='../controllers/Usuarios.php' method="post">
 										<input type = "hidden" name = "operacao" value = "form/incluir">
 										<button type="submit" class="btn btn-sm btn-outline-primary float-right"><i class="fas fa-plus"></i> Incluir</button>

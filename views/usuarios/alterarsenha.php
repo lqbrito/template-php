@@ -46,7 +46,7 @@
 			                    <div class="row">
 			                    	<div class="col-12">
 			                    		<button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>
-			                    		<a href="../public/Index.php" class="btn btn-light" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
+			                    		<a href="../site/Index.php" class="btn btn-light" title="Fechar'"><i class="fas fa-undo"></i> Cancelar</i></a>
 			                    	</div>
 			                    </div>
 			                </form>
