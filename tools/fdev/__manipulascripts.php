@@ -100,7 +100,7 @@
 			if ($_POST['fonte'] == 'laravel')
 				$nomeArquivoDestino = $dircontrollers . DIRECTORY_SEPARATOR . $namespace . DIRECTORY_SEPARATOR . $classetabela . $scriptDeLayout;
 			if ($_POST['fonte'] == 'php')
-				$nomeArquivoDestino = $dircontrollers . DIRECTORY_SEPARATOR . $namespace . DIRECTORY_SEPARATOR . $tabela . '.php';
+				$nomeArquivoDestino = $dircontrollers . DIRECTORY_SEPARATOR . $namespace . DIRECTORY_SEPARATOR . $classetabela . '.php';
 			$dir = $dircontrollers . DIRECTORY_SEPARATOR . $namespace;
 			// Cria o diretório da namespace dentro do diretório definido para os controllers
 			if(!is_dir($dir))
