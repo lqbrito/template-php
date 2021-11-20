@@ -114,7 +114,7 @@
 					[
 						'nome'	=> $this->input['nome'],
 						'login'	=> $this->input['login'], // Utilizar sempre $this->input em vez de $_POST
-						'senha'	=> $this->criptografaSenha($this->input['login'], 'troquesuasenha'),
+						'senha'	=> $this->criptografaSenha($this->input['login'], $this->input['login']),
 					]
 				);
 				$this->model()->commit(); // Conclui a transação
