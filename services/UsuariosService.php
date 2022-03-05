@@ -22,7 +22,10 @@
 
 		public function alterarSenha()
 	    {
-	        $this->validaToken(); // Valida token para evitar ataque csrf
+	        $resultado = $this->validaToken(); // Valida token para evitar ataque csrf
+			if ($resultado == self::OPERACAOJAREALIZADA)
+				return true;
+			
 			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
@@ -104,7 +107,10 @@
 	    
 	    public function incluir()
 		{
-			$this->validaToken(); // Valida token para evitar ataque csrf
+			$resultado = $this->validaToken(); // Valida token para evitar ataque csrf
+			if ($resultado == self::OPERACAOJAREALIZADA)
+				return true;
+			
 			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
@@ -132,7 +138,10 @@
 
 		public function alterar()
 		{
-			$this->validaToken(); // Valida token para evitar ataque csrf
+			$resultado = $this->validaToken(); // Valida token para evitar ataque csrf
+			if ($resultado == self::OPERACAOJAREALIZADA)
+				return true;
+			
 			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
@@ -160,7 +169,10 @@
 
 		public function excluir()
 		{
-			$this->validaToken(); // Valida token para evitar ataque csrf
+			$resultado = $this->validaToken(); // Valida token para evitar ataque csrf
+			if ($resultado == self::OPERACAOJAREALIZADA)
+				return true;
+			
 			try
 			{
 				$usuarios = $this->model()->find($this->filterInput('id', 'int')); // Busca o registro na tabela

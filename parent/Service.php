@@ -10,6 +10,9 @@
     	protected $limiteRegistros = 30; // Define a quantidade máxima de registros recuperados em uma consulta sem paginação
     	protected $totRegs = 10; // Define a quantidade de registros recuperados em uma consulta com paginação
     	
+    	const OPERACAOJAREALIZADA = 1;
+    	const PODEREALIZAROPERACAO = 2;
+
 	    function __construct()
 		{
 			
@@ -135,9 +138,32 @@
 
 		public function validaToken()
 		{
-			// Valida o csrf armazenado em um formulário enviado via POST 
-			if (!(isset($_POST['csrf']) && $_POST['csrf'] == $_SESSION['csrf']))
+			//$this->dd([$_POST['csrf'], $_SESSION['csrf']]);
+			
+			if (!isset($_POST['csrf']) && !isset($_SESSION['csrf']))
 				die("Operação não autorizada!");
+			
+			if (isset($_POST['csrf']) && isset($_SESSION['csrf']))
+			{
+				if ($_POST['csrf'] != $_SESSION['csrf'])
+					die("Operação não autorizada!");
+			}
+			else
+				if (isset($_SESSION['csrf']))
+					die("Operação não autorizada!");
+				else		
+					if (isset($_POST['csrf']))
+						return self::OPERACAOJAREALIZADA;
+
+			unset($_POST['csrf']);
+			unset($_SESSION['csrf']);
+
+			return self::PODEREALIZAROPERACAO;
+			
+			/*
+				if (!(isset($_POST['csrf']) && $_POST['csrf'] == $_SESSION['csrf']))
+				die("Operação não autorizada!");			
+			*/
 		}
 		
 		public function validaRequest()
