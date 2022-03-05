@@ -19,6 +19,12 @@
 			$app = App::getInstance(); // Obtém a instância da classe de configuração App
 		}
 
+		public function dd($dados)
+		{
+			var_dump($dados);
+			die();
+		}
+
     	public function incluir()
 		{
 			// Este método deve ser definido em uma subclasse

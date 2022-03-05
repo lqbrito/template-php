@@ -15,7 +15,13 @@
 			
 		}
 
-		public function getTotPaginas($count)
+		public function dd($dados)
+		{
+			var_dump($dados);
+			die();
+		}
+
+    	public function getTotPaginas($count)
 		{
 			// Obtém a quantidade total de páginas obtidas em uma consulta com paginação. $count representa uma contagem dos registros obtidos pela consulta com paginação
 			$qtde_pg = ceil ($count / $this->getTotRegs());
@@ -105,7 +111,7 @@
 	    	return filter_input($origem, $campo, $op);
 	    }
 	    
-	    public function buscarpesquisa()
+	    public function buscarPesquisa()
 	    {
 	        $textobusca = '';
 	        if (isset($_SESSION['Pesquisa']))
@@ -127,14 +133,14 @@
 			return $valores; // Retorna o array de campos com todos os valores em branco
 		}
 
-		public function valida_token()
+		public function validaToken()
 		{
 			// Valida o csrf armazenado em um formulário enviado via POST 
 			if (!(isset($_POST['csrf']) && $_POST['csrf'] == $_SESSION['csrf']))
 				die("Operação não autorizada!");
 		}
 		
-		public function valida_request()
+		public function validaRequest()
 		{
 			return true; // Este método originalmente valida todos os dados enviados por um form e deve ser redefinido em uma subclasse para validação individual de cada dado enviado pelo formulário
 		}

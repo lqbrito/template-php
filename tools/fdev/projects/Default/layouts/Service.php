@@ -10,7 +10,7 @@
 			$this->model = new [nome_classe_model]Domain(); // Inicializa a model associada ao serviço
 		}
 
-		public function valida_request()
+		public function validaRequest()
 		{
 			$this->input = $this->filterAll(); // Retorna todos os campos de $_POST sanitizados
 			$validado = true;
@@ -29,8 +29,8 @@
 
 		public function incluir()
 		{
-			$this->valida_token(); // Valida token para evitar ataque csrf
-			if (!$this->valida_request()) // Se não passar pela validação
+			$this->validaToken(); // Valida token para evitar ataque csrf
+			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
 			{
@@ -55,8 +55,8 @@
 
 		public function alterar()
 		{
-			$this->valida_token(); // Valida token para evitar ataque csrf
-			if (!$this->valida_request()) // Se não passar pela validação
+			$this->validaToken(); // Valida token para evitar ataque csrf
+			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
 			{
@@ -82,7 +82,7 @@
 
 		public function excluir()
 		{
-			$this->valida_token(); // Valida token para evitar ataque csrf
+			$this->validaToken(); // Valida token para evitar ataque csrf
 			try
 			{
 				$[nome_model] = $this->model()->find($this->filterInput('id', 'int')); // Busca o registro na tabela
@@ -106,7 +106,7 @@
 			$count = 0;
 			try
 			{
-				$textobusca = $this->buscarpesquisa(); // Verifica se tem alguma string de busca informada pelo usuário
+				$textobusca = $this->buscarPesquisa(); // Verifica se tem alguma string de busca informada pelo usuário
 				$listaTudo = strlen($textobusca) >= $this->tamanhoStringBusca; // Configura pra listar todos os registros quando enviar o resultado para a view
 				$count = $this->model()->count( // Obtém a quantidade de registros para esta consulta
 					[

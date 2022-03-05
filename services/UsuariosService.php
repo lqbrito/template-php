@@ -10,7 +10,7 @@
 			$this->model = new UsuariosDomain(); // Inicializa a model associada ao serviço
 		}
 
-		public function valida_request()
+		public function validaRequest()
 		{
 			$this->input = $this->filterAll(); // Retorna todos os campos de $_POST sanitizados
 			$validado = true;
@@ -22,8 +22,8 @@
 
 		public function alterarSenha()
 	    {
-	        $this->valida_token(); // Valida token para evitar ataque csrf
-			if (!$this->valida_request()) // Se não passar pela validação
+	        $this->validaToken(); // Valida token para evitar ataque csrf
+			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
 			{
@@ -66,8 +66,8 @@
 	    
 	    public function login()
 	    {
-	    	$this->valida_token(); // Valida token para evitar ataque csrf
-			if (!$this->valida_request()) // Se não passar pela validação
+	    	$this->validaToken(); // Valida token para evitar ataque csrf
+			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			$this->model()->select( // Consulta os dados do usuário na tabela através do seu login
 				["id", "nome", "login", "senha"],
@@ -104,8 +104,8 @@
 	    
 	    public function incluir()
 		{
-			$this->valida_token(); // Valida token para evitar ataque csrf
-			if (!$this->valida_request()) // Se não passar pela validação
+			$this->validaToken(); // Valida token para evitar ataque csrf
+			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
 			{
@@ -132,8 +132,8 @@
 
 		public function alterar()
 		{
-			$this->valida_token(); // Valida token para evitar ataque csrf
-			if (!$this->valida_request()) // Se não passar pela validação
+			$this->validaToken(); // Valida token para evitar ataque csrf
+			if (!$this->validaRequest()) // Se não passar pela validação
 				return false;
 			try
 			{
@@ -160,7 +160,7 @@
 
 		public function excluir()
 		{
-			$this->valida_token(); // Valida token para evitar ataque csrf
+			$this->validaToken(); // Valida token para evitar ataque csrf
 			try
 			{
 				$usuarios = $this->model()->find($this->filterInput('id', 'int')); // Busca o registro na tabela
@@ -187,7 +187,7 @@
 				$this->model()->raw("SELECT id_cli, id_, descricao FROM usuarios WHERE id_cli = :id_cli ORDER BY descricao ASC", [':id_cli' => '1']);
 				*/
 				
-				$textobusca = $this->buscarpesquisa(); // Verifica se tem alguma string de busc informada pelo usuário
+				$textobusca = $this->buscarPesquisa(); // Verifica se tem alguma string de busc informada pelo usuário
 				$listaTudo = strlen($textobusca) >= $this->tamanhoStringBusca; // Configura pra listar todos os registros quando enviar o resultado para a view
 				$count = $this->model()->count( // Obtém a quantidade de registros para esta consulta
 					[

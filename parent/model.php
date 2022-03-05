@@ -14,7 +14,13 @@
         protected $pagina = -1; // Informa qual a página de offset em uma query que utiliza a cláusula LIMIT
         protected $totRegs = -1; // Indica a quantidade de registros por página em uma query com LIMIT
 
-        public function defineLimits($pagina = -1, $totRegs = -1)
+        public function dd($dados)
+		{
+			var_dump($dados);
+			die();
+		}
+
+    	public function defineLimits($pagina = -1, $totRegs = -1)
         {
         	// Define a página de offset e a quantidade de registros que serão retornados quando uma query utilizar a clausula LIMIT
         	$this->pagina =  $pagina;
@@ -41,7 +47,7 @@
         	$this->getConnect()->getPdo()->rollBack(); // Desfaz a transação
         }
 
-        public function select($select, $where = null, $orderby = null, $raw = null)
+        public function select($select, $where = null, $orderby = null, $raw = null, $apelido = "k")
 		{
 			// Executa uma query com diversas possibilidades de parâmetros
 			// $select é um array que indica os campos a serem retornados pela query. Para retornar todos, basta usar [*]
@@ -60,8 +66,12 @@
 					$st .= ' ';
         	}
 		
-			$st .= 'FROM ' . $this->table . ' ';	
-            $st .= 'WHERE 1=1 ';
+			$st .= 'FROM ' . $this->table . " $apelido ";	
+            
+            if (isset($raw)) // Adiciona a string $raw à query
+				$st .= $raw;
+
+			$st .= 'WHERE 1=1 ';
 			$binds = array();
 			if (isset($where))
 			{
@@ -76,7 +86,11 @@
 						if ($k == 1)
 							$binds [$where[$i][$k]] = $where[$i][$k + 2];
 					}
-					$st .= ':' . $where[$i][1] . ' ';
+					$parametro = $where[$i][1];
+					$res = mb_strpos($parametro, ".");
+					if(!$res === false)
+						$parametro = mb_substr($parametro, $res + 1);
+					$st .= ':' . $parametro . ' ';
             	}
 			}
 
@@ -104,14 +118,10 @@
             	$st .= ' ';
 			}
 
-			if (isset($raw)) // Adiciona a string $raw à query
-				$st .= $raw;
-
 			// Se foram definidos um offset e uma quantidade de registros, adiciona a cláusula LIMIT à query
 			if($this->pagina != -1 && $this->totRegs != -1)
 				$st .= " LIMIT $this->pagina, $this->totRegs";
 
-			//var_dump($binds);
 			//var_dump($st);
 			//die();
 			$this->result = $this->getConnect()->getPdo()->prepare($st); // Prepara a query
@@ -278,7 +288,11 @@
 			{
 				$this->result->bindValue($key, $value);
 			}
-			return $this->result->execute();
+
+			if($this->result->execute())
+				return $this->raw("SELECT MAX($this->primaryKey) FROM $this->table");
+			else
+				return false;
 		}
 
 		public function update($dados, $ativavalidacao = true)

@@ -11,7 +11,13 @@
 			$this->view($data); // Renderiza a view definida em uma subclasse
 		}
 	
-		function links($controller, $pagina, $paginas)
+		public function dd($dados)
+		{
+			var_dump($dados);
+			die();
+		}
+
+    	function links($controller, $pagina, $paginas)
 		{
 			echo "<nav aria-label='...'>";
   			echo "<ul class='pagination justify-content-center'>";
@@ -45,7 +51,7 @@
 			// Cria um hash criptografado para proteção CRSF
 			$nro = rand(1000000, 100000000);
 			$hash = hash ("sha512", $nro);
-			$_SESSION['csrf'] = $hash; // Utiliza a variável de sessão para gerenciar o hash crsf
+			$_SESSION['csrf'] = $hash; // Utiliza a variável de sessão para gerenciar o hash csrf
 			return $hash;
 		}
 
@@ -65,7 +71,7 @@
 			if (isset($_SESSION['Status']))
 			{
 				echo "<div class='alert alert-primary alert-dismissible fade show' role='alert'>";
-	        	echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
+	        	//echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
 		        echo "<h4><i class='icon fa fa-info'></i> Aviso!</h4>";
 		        echo $_SESSION['Status'];
 	        	echo "</div>";
@@ -74,7 +80,7 @@
 			if (isset($_SESSION['Aviso']))
 			{
 				echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>";
-	        	echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
+	        	//echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
 		        echo "<h4><i class='icon fa fa-info'></i> Aviso!</h4>";
 		        echo $_SESSION['Aviso'];
 	        	echo "</div>";
@@ -83,7 +89,7 @@
 			if (isset($_SESSION['Sucesso']))
 			{
 				echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>";
-	        	echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
+	        	//echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
 		        echo "<h4><i class='icon fa fa-thumbs-up'></i> Sucesso!</h4>";
 		        echo $_SESSION['Sucesso'];
 	        	echo "</div>";
@@ -92,7 +98,7 @@
 			if (isset($_SESSION['Erro']))
 			{
 				echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>";
-	        	echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
+	        	//echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
 		        echo "<h4><i class='icon fa fa-thumbs-down'></i> Erro!</h4>";
 		        echo $_SESSION['Erro'];
 	        	echo "</div>";
@@ -101,7 +107,7 @@
 			if (isset($_SESSION['Erros']))
 			{
 				echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>";
-	        	echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
+	        	//echo "<button type='button' class='close' data-dismiss='alert' aria-hIDden='true'>×</button>";
 		        echo "<h4><i class='icon fa fa-thumbs-down'></i> Erros!</h4>";
 		        echo "<p>Foram encontrdos os seguintes erros:</p>";
 		        echo "<ol>";
