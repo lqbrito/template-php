@@ -26,16 +26,18 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="col-md-9">
-                                <?php echo $titulo; ?>
-                            </div>
-                            <div class="col-md-3 text-right">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href='../site' class="btn btn-sm btn-outline-primary mr-1"><i class="fas fa-reply"></i> Voltar</a>
-                                    <form action='../controllers/Tpclasses.php' method="post">
-                                        <input type = "hidden" name = "operacao" value = "form/incluir">
-                                        <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Incluir</button>
-                                    </form>
+                            <div class="row">
+                                <div class="col-6">
+                                    <?php echo $titulo; ?>
+                                </div>
+                                <div class="col-6">
+                                    <div class="btn-group float-right" role="group" aria-label="Basic example">
+                                        <a href='../site' class="btn btn-sm btn-outline-primary mr-1"><i class="fas fa-reply"></i> Voltar</a>
+                                        <form action='../controllers/Tpclasses.php' method="post">
+                                            <input type = "hidden" name = "operacao" value = "form/incluir">
+                                            <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Incluir</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
