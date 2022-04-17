@@ -102,23 +102,7 @@
                       </li>
 
                       <li class="nav-item">
-                      <?php
-                        if(isset($campoBusca))
-                        {
-                            ?>
-                            <form action="../controllers/<?php echo $controller; ?>" method="post">
-                                <div class="input-group input-group-sm mt-1 ml-5">
-                                    <input type = "hidden" name = "operacao" value = "action/pesquisar">
-                                    <input type="text" class="form-control" id="textobusca" name="textobusca" placeholder="Informe <?php echo $campoBusca; ?>" title="Digite pelo menos <?php echo $tamanhoStringBusca; ?> caracteres" autofocus value="<?php echo $textobusca; ?>">
-                                    <span class="input-group-append">
-                                        <button type = "submit" class="btn btn-primary btn-flat" id="pesquisar" name = "pesquisar" title="Pesquisar"><i class="fa fa-search"></i></button>
-                                    </span>
-                                </div>
-                                
-                            </form>
-                            <?php
-                          }
-                      ?>
+                      
                       </li>
 
                   <?php

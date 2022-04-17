@@ -35,7 +35,7 @@ class IndexUsuariosView extends View
 
 						<div class="card-body">
 							<div class="row">
-                                <div class="col-lg-9 col-sm-12 mb-3">
+                                <div class="col-lg-10 col-sm-12 mb-3">
                                     <form action="../controllers/<?php echo $controller; ?>" method="post">
                                         <div class="input-group input-group-sm">
                                             <input type = "hidden" name = "operacao" value = "action/pesquisar">
@@ -46,7 +46,7 @@ class IndexUsuariosView extends View
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-lg-3 col-sm-12 mb-3">
+                                <div class="col-lg-2 col-sm-12 mb-3">
                                     <div class="btn-group float-right" role="group" aria-label="Basic example">
                                         <a href='../site' class="btn btn-sm btn-outline-primary mr-1"><i class="fas fa-reply"></i> Voltar</a>
                                         <form action='../controllers/<?php echo $controller; ?>' method="post">

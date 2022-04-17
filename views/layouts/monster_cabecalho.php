@@ -56,32 +56,6 @@
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                            
-                    <?php
-                        if(isset($campoBusca))
-                        {
-                            ?>
-                                <ul class="navbar-nav me-auto mt-md-0 ">
-                    
-                                    <li class="nav-item hidden-sm-down">
-                        
-                                        <form class="app-search ps-3" action="../controllers/<?php echo $controller; ?>" method="post">
-                                            <div class="input-group input-group-sm">
-                                                <input type = "hidden" name = "operacao" value = "action/pesquisar">
-                                                <input type="text" class="form-control rounded" id="textobusca" name="textobusca" placeholder="Informe <?php echo $campoBusca; ?>" title="Digite pelo menos <?php echo $tamanhoStringBusca; ?> caracteres" autofocus value="<?php echo $textobusca; ?>">
-                                                <span class="input-group-append">
-                                                    <button type = "submit" class="btn btn-primary mt-0 border border-2" id="pesquisar" name = "pesquisar" title="Pesquisar"><i class="fa fa-search"></i></button>
-                                                </span>
-                                            </div>
-                                            
-                                        </form>
-
-                                    </li>
-                                </ul>
-                            <?php
-                        }
-                    ?>
-                    
                     <ul class="navbar-nav me-auto mt-md-0 ">
 
                         <li class="nav-item">

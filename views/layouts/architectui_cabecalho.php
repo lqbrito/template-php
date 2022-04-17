@@ -59,23 +59,6 @@
             </div>    
             <div class="app-header__content">
                 <div class="app-header-left">
-                    <?php
-                        if(isset($campoBusca))
-                        {
-                            ?>
-                            <form action="../controllers/<?php echo $controller; ?>" method="post">
-                                <div class="input-group input-group-sm">
-                                    <input type = "hidden" name = "operacao" value = "action/pesquisar">
-                                    <input type="text" class="form-control" id="textobusca" name="textobusca" placeholder="Informe <?php echo $campoBusca; ?>" title="Digite pelo menos <?php echo $tamanhoStringBusca; ?> caracteres" autofocus value="<?php echo $textobusca; ?>">
-                                    <span class="input-group-append">
-                                        <button type = "submit" class="btn btn-primary btn-flat" id="pesquisar" name = "pesquisar" title="Pesquisar"><i class="fa fa-search"></i></button>
-                                    </span>
-                                </div>
-                                
-                            </form>
-                            <?php
-                        }
-                    ?>
                     <ul class="header-menu nav">
                         <li class="nav-item">
                             
