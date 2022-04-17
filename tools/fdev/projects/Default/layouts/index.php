@@ -51,7 +51,7 @@
                                         <a href='../site' class="btn btn-sm btn-outline-primary mr-1"><i class="fas fa-reply"></i> Voltar</a>
                                         <form action='../controllers/<?php echo $controller; ?>' method="post">
                                             <input type = "hidden" name = "operacao" value = "form/incluir">
-                                            <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Incluir</button>
+                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Incluir</button>
                                         </form>
                                     </div>
                                 </div>
