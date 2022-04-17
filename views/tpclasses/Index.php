@@ -27,22 +27,35 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12">
                                     <?php echo $titulo; ?>
                                 </div>
-                                <div class="col-6">
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-9 col-sm-12 mb-3">
+                                    <form action="../controllers/<?php echo $controller; ?>" method="post">
+                                        <div class="input-group input-group-sm">
+                                            <input type = "hidden" name = "operacao" value = "action/pesquisar">
+                                            <input type="text" class="form-control" id="textobusca" name="textobusca" placeholder="Informe <?php echo $campoBusca; ?>" title="Digite pelo menos <?php echo $tamanhoStringBusca; ?> caracteres" autofocus value="<?php echo $textobusca; ?>">
+                                            <span class="input-group-append">
+                                                <button type = "submit" class="btn btn-primary btn-flat" id="pesquisar" name = "pesquisar" title="Pesquisar"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-3 col-sm-12 mb-3">
                                     <div class="btn-group float-right" role="group" aria-label="Basic example">
                                         <a href='../site' class="btn btn-sm btn-outline-primary mr-1"><i class="fas fa-reply"></i> Voltar</a>
-                                        <form action='../controllers/Tpclasses.php' method="post">
+                                        <form action='../controllers/<?php echo $controller; ?>' method="post">
                                             <input type = "hidden" name = "operacao" value = "form/incluir">
                                             <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Incluir</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover table-sm table-condensed">
                                     <thead class="thead-dark">
