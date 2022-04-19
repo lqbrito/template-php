@@ -1,8 +1,8 @@
 <?php
-	include_once('../config/Connect.php');
+include_once('../config/Connect.php');
 
-	class Model
-	{
+class Model
+{
 		protected $conn; // Aponta para a conexão PDO da aplicação
 		protected $table = ''; // Nome da tabela acessada pela model
         protected $primaryKey = 'id'; // Nome do campo que é chave primária da tabela
@@ -15,12 +15,12 @@
         protected $totRegs = -1; // Indica a quantidade de registros por página em uma query com LIMIT
 
         public function dd($dados)
-		{
-			var_dump($dados);
-			die();
-		}
+        {
+        	var_dump($dados);
+        	die();
+        }
 
-    	public function defineLimits($pagina = -1, $totRegs = -1)
+        public function defineLimits($pagina = -1, $totRegs = -1)
         {
         	// Define a página de offset e a quantidade de registros que serão retornados quando uma query utilizar a clausula LIMIT
         	$this->pagina =  $pagina;
@@ -47,16 +47,16 @@
         	$this->getConnect()->getPdo()->rollBack(); // Desfaz a transação
         }
 
-        public function select($select, $where = null, $orderby = null, $raw = null, $apelido = "k")
-		{
+        public function select($select, $where = null, $orderby = null, $raw = null, $apelido = "m")
+        {
 			// Executa uma query com diversas possibilidades de parâmetros
 			// $select é um array que indica os campos a serem retornados pela query. Para retornar todos, basta usar [*]
 			// $where é um array de arrays, onde cada array informa o campo, o operador relacional e o valor a ser comparado
 			// $orderby é um array de arrays, onde cada array informa um campo para ordenar e o tipo de ordenação ASC ou DESC
 			// $raw é uma string crua com comandos SQL que será anexada ao final da consulta
 
-			$st = 'SELECT ';
-			$tam = count($select);
+        	$st = 'SELECT ';
+        	$tam = count($select);
 			for ($i = 0; $i < $tam; $i++) // Adiciona cada campo de $select à query
 			{
 				$st .= $select[$i];
@@ -64,40 +64,54 @@
 					$st .= ', ';
 				else
 					$st .= ' ';
-        	}
-		
-			$st .= 'FROM ' . $this->table . " $apelido ";	
-            
-            if (isset($raw)) // Adiciona a string $raw à query
-				$st .= $raw;
+			}
 
-			$st .= 'WHERE 1=1 ';
-			$binds = array();
-			if (isset($where))
-			{
-				$tam = count($where);
+			$st .= 'FROM ' . $this->table . " $apelido";	
+
+            if (isset($raw)) // Adiciona a string $raw à query
+            $st .= $raw;
+
+            $st .= ' WHERE 1=1 ';
+            $binds = array();
+            if (isset($where))
+            {
+            	$tam = count($where);
 				for ($i = 0; $i < $tam; $i++) // Adiciona cada condição do $where à query
 				{
+					$ress = mb_strpos($where[$i][3], "*");
+					$temParametro = $ress === false;
 					$tam2 = count($where[$i]);
 					for ($k = 0; $k < $tam2; $k++)
 					{
 						if ($k < $tam2 - 1)
 							$st .= $where[$i][$k] . ' ';
-						if ($k == 1)
-							$binds [$where[$i][$k]] = $where[$i][$k + 2];
+						if ($k == 1 && $temParametro)
+						{
+							$parametro = $where[$i][$k];
+							$res = mb_strpos($parametro, ".");
+							if(!$res === false)
+								$parametro = mb_substr($parametro, $res + 1);
+							$binds [$parametro] = $where[$i][$k + 2];
+						}
+					}					
+					if ($temParametro)
+					{
+						$parametro = $where[$i][1];
+						$res = mb_strpos($parametro, ".");
+						if(!$res === false)
+							$parametro = mb_substr($parametro, $res + 1);
+						$st .= ':' . $parametro . ' ';	
 					}
-					$parametro = $where[$i][1];
-					$res = mb_strpos($parametro, ".");
-					if(!$res === false)
-						$parametro = mb_substr($parametro, $res + 1);
-					$st .= ':' . $parametro . ' ';
-            	}
+					else
+						$st .= mb_substr($where[$i][3], $ress + 1) . ' ';		
+
+				}
 			}
 
-            if (isset($orderby))
+			if (isset($orderby))
 			{
 				$st .= 'ORDER BY';	
-			
+
 				$tam = count($orderby);
 				for ($i = 0; $i < $tam; $i++) // Adiciona cada campo de $orderby à query
 				{
@@ -114,16 +128,16 @@
 							else
 								$st .= ' ' . $orderby[$i][$k];
 						}
-            	}
-            	$st .= ' ';
-			}
+					}
+					$st .= ' ';
+				}
 
 			// Se foram definidos um offset e uma quantidade de registros, adiciona a cláusula LIMIT à query
 			if($this->pagina != -1 && $this->totRegs != -1)
 				$st .= " LIMIT $this->pagina, $this->totRegs";
 
-			//var_dump($st);
-			//die();
+			//$this->dd([$st, $binds]);
+
 			$this->result = $this->getConnect()->getPdo()->prepare($st); // Prepara a query
 			foreach ($binds as $key => $value)
 			{
@@ -161,19 +175,19 @@
 							$binds [$where[$i][$k]] = $where[$i][$k + 2];
 					}
 					$st .= ':' . $where[$i][1] . ' ';
-            	}
+				}
 			}
 
             if (isset($raw)) // Adiciona a string $raw à query
-				$st .= $raw;
+            $st .= $raw;
 
 			//var_dump($st);
 			//die();
-			$this->result = $this->getConnect()->getPdo()->prepare($st);
-			foreach ($binds as $key => $value)
-			{
-				$this->result->bindValue(":" . $key, $value);
-			}			
+            $this->result = $this->getConnect()->getPdo()->prepare($st);
+            foreach ($binds as $key => $value)
+            {
+            	$this->result->bindValue(":" . $key, $value);
+            }			
 			$this->result->execute(); // Executa a query
 			$row = $this->result->fetch();
 			//var_dump($row);
@@ -190,20 +204,22 @@
 				foreach ($param as $p => $valor)
 				{
 					$this->result->bindValue($p, $valor);
-            	}
-            $this->result->execute();			
-			$this->rows = null;
-			$this->rows = array();
-			$this->valueprimaryKey = null;
-			while ($row = $this->result->fetch())
+				}
+				$this->result->execute();			
+				$this->rows = null;
+				$this->rows = array();
+				$this->valueprimaryKey = null;
+				while ($row = $this->result->fetch())
 				$this->rows[] = $row; // Atribui o resultado da consulta ao atributo rows
 			return $this->all(); // Devolve o conteúdo do atributo rows
 		}
 
 		public function find($id) // Localiza um registro com base na sua chave primária
 		{
-			$st = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '= :' . $this->primaryKey;			
+			$st = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '= :' . $this->primaryKey;
+			
 			$this->result = $this->getConnect()->getPdo()->prepare($st);
+
 			$this->result->bindValue(':' . $this->primaryKey, $id);
 			$this->result->execute();			
 			$this->rows = null;
@@ -278,44 +294,44 @@
 			{
 				$data = new DateTime();
              	$st1 .= ', created_at, updated_at'; // Insere a data e a hora atuais
-				$st2 .= ', \'' . $data->format('Y-m-d H:i:s') . '\', \'' . $data->format('Y-m-d H:i:s') . '\'';
-			}
-			$st = $st1 . $st2 . $st3;
+             	$st2 .= ', \'' . $data->format('Y-m-d H:i:s') . '\', \'' . $data->format('Y-m-d H:i:s') . '\'';
+             }
+             $st = $st1 . $st2 . $st3;
 			//var_dump($st);
 			//die();
-			$this->result = $this->getConnect()->getPdo()->prepare($st);
-			foreach ($binds as $key => $value)
-			{
-				$this->result->bindValue($key, $value);
-			}
+             $this->result = $this->getConnect()->getPdo()->prepare($st);
+             foreach ($binds as $key => $value)
+             {
+             	$this->result->bindValue($key, $value);
+             }
 
-			if($this->result->execute())
-				return $this->raw("SELECT MAX($this->primaryKey) FROM $this->table");
-			else
-				return false;
-		}
+             if($this->result->execute())
+             	return $this->raw("SELECT MAX($this->primaryKey) FROM $this->table");
+             else
+             	return false;
+         }
 
-		public function update($dados, $ativavalidacao = true)
-		{				
+         public function update($dados, $ativavalidacao = true)
+         {				
 			// Altera um registro localizado pelo método find
 			// Se o parâmetro $ativavalidacao for true, só são adicionados à query os campos informados no atributo fillable
-			
-			$_id = -1;
-			
-			// Se chamar o método update sem ter feito uma consulta na tabela, não faz nada
-			if (isset($this->valueprimaryKey)) 
-				$_id = $this->valueprimaryKey;
-			else
-				return false;
-			
-			// se não passar nenhum dado ou se não tiver o que validar, finaliza o método
-			if (($ativavalidacao && count($this->fillable) == 0) || count($dados) == 0)
-				return false;
 
-			$st1 = 'UPDATE ' . $this->table;
-			$st2 = ' SET ';
-			$cont = 0;
-			$binds = array();
+         	$_id = -1;
+
+			// Se chamar o método update sem ter feito uma consulta na tabela, não faz nada
+         	if (isset($this->valueprimaryKey)) 
+         		$_id = $this->valueprimaryKey;
+         	else
+         		return false;
+
+			// se não passar nenhum dado ou se não tiver o que validar, finaliza o método
+         	if (($ativavalidacao && count($this->fillable) == 0) || count($dados) == 0)
+         		return false;
+
+         	$st1 = 'UPDATE ' . $this->table;
+         	$st2 = ' SET ';
+         	$cont = 0;
+         	$binds = array();
 			if ($ativavalidacao) // Se utilizar a validação
 			{
 				foreach ($this->fillable as $f) // Só insere na query os campos informados em fillable
@@ -346,54 +362,54 @@
 			{
 				$data = new DateTime();
              	$st2 .= ', updated_at = '; // Insere a data e a hora atuais
-				$st2 .= '\'' . $data->format('Y-m-d H:i:s') . '\'';
-			}			
-			$st = $st1 . $st2 . $st3;
+             	$st2 .= '\'' . $data->format('Y-m-d H:i:s') . '\'';
+             }			
+             $st = $st1 . $st2 . $st3;
 			//var_dump($st);
 			//die();
-			$this->result = $this->getConnect()->getPdo()->prepare($st);
-			$this->result->bindValue(':' . $this->primaryKey, $_id);
-			foreach ($binds as $key => $value)
-			{
-				$this->result->bindValue($key, $value);
-			}
-			
-			return $this->result->execute();
-		}
+             $this->result = $this->getConnect()->getPdo()->prepare($st);
+             $this->result->bindValue(':' . $this->primaryKey, $_id);
+             foreach ($binds as $key => $value)
+             {
+             	$this->result->bindValue($key, $value);
+             }
 
-		public function delete()
-		{
+             return $this->result->execute();
+         }
+
+         public function delete()
+         {
 			// Exclui um registro localizado pelo método find
-			
-			$_id = -1;
-			
+
+         	$_id = -1;
+
 			// Se chamar o método delete sem ter feito uma consulta na tabela, não faz nada
-			if (isset($this->valueprimaryKey))
-				$_id = $this->valueprimaryKey;
-			else
-				return false;
-			
-			$st = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '= :' . $this->primaryKey;
-			
+         	if (isset($this->valueprimaryKey))
+         		$_id = $this->valueprimaryKey;
+         	else
+         		return false;
+
+         	$st = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '= :' . $this->primaryKey;
+
 			//var_dump($st);
 			//die();
-			$this->valueprimaryKey = null;
-			$this->result = $this->getConnect()->getPdo()->prepare($st);
-			$this->result->bindValue(':' . $this->primaryKey, $_id);
-			return $this->result->execute();			
-		}
+         	$this->valueprimaryKey = null;
+         	$this->result = $this->getConnect()->getPdo()->prepare($st);
+         	$this->result->bindValue(':' . $this->primaryKey, $_id);
+         	return $this->result->execute();			
+         }
 
-		private function fetch($result = null)
-		{
+         private function fetch($result = null)
+         {
 			// Converte o resultado de uma consulta em um array e devolve o array
-			if ($result != null)
-				$this->result = $result;			
-			$row = $this->result->fetch(PDO::FETCH_OBJ);			
-			return $row;
-		}
+         	if ($result != null)
+         		$this->result = $result;			
+         	$row = $this->result->fetch(PDO::FETCH_OBJ);			
+         	return $row;
+         }
 
-		public function getConnect()
-		{
+         public function getConnect()
+         {
 			return $this->conn; // Retorna o objeto PDO da conexão
 		}
 
