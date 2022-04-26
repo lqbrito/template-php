@@ -2,12 +2,19 @@
 	class View
 	{
 		protected $data; // Representa os dado enviados pelo controller
-		protected $maxLinks = 3; // Quantidade de links antes e depois da página atual
+		protected $model; // Representa a tabela passada como model para a view
+		protected $maxLinks; // Quantidade de links antes e depois da página atual
+		protected $valorNaoSelecionado; // Valor para quando nenhum option do select for selecionado
+		protected $textoNaoSelecionado; // Texto para mostrar quando nenhum option do select for selecionado
 	  
 
 		function __construct($data = null)
 		{
 			$this->data = $data; // Recebe os dados do controller
+			$this->model = null; // Inicia o model com null
+			$this->valorNaoSelecionado = null; // Este será o valor retornado pelo select quando nenhum option for selecionado
+			$this->textoNaoSelecionado = null; // Este será o texto mostrado pelo select quando nenhum option for selecionado
+			$this->maxLinks = 3; // Inicia a quantidade máxima de links
 			$this->view($data); // Renderiza a view definida em uma subclasse
 		}
 	
@@ -15,6 +22,42 @@
 		{
 			var_dump($dados);
 			die();
+		}
+
+    	function setModel($model)
+		{
+			$this->model = $model;
+		}
+
+		function setNotSelected($valorNaoSelecionado, $textoNaoSelecionado)
+		{
+			$this->valorNaoSelecionado = $valorNaoSelecionado;
+			$this->textoNaoSelecionado = $textoNaoSelecionado;
+		}
+
+		public function select($classe, $campo, $label, $tabela, $valor, $texto, $texto2 = null, $separador = " - ")
+		{
+			echo "<div class='$classe'>";
+            echo "<label class='bmd-label-floating' for='$campo'>$label</label>";
+            echo "<select class='form-control' id='$campo' name='$campo'>";
+            if ($this->valorNaoSelecionado != null && $this->textoNaoSelecionado != null)
+            echo "<option value='$this->valorNaoSelecionado'>$this->textoNaoSelecionado</option>";
+            foreach($tabela as $tab)
+            {
+            	$selected = "";
+            	var_dump([$this->model[$campo], $tab[$valor]]);
+            	if ($this->model[$campo] == $tab[$valor])
+            		$selected = "selected";
+            	$linha = "<option value='" . $tab[$valor] . "' $selected>" . $tab[$texto];
+            	if (isset($texto2))
+            	{
+            		$linha .= $separador . $tab[$texto2];
+            	}
+            	$linha .= "</option>";
+                echo $linha;
+            }
+            echo "</select>";
+            echo "</div>";
 		}
 
     	function links($controller, $pagina, $paginas)
