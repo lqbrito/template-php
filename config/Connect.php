@@ -1,11 +1,34 @@
 <?php
 	// Definições padrão para acesso ao banco de dados
-	DEFINE ('DB_SGBD', 'mysql');
-	DEFINE ('DB_HOST', 'localhost');
-	DEFINE ('DB_NAME', 'template_php');
-	DEFINE ('DB_USER', 'root');
-	DEFINE ('DB_PASSWORD', '');
+	DEFINE ('ENVIRONMENT', 'development'); // development, test, production
 
+	if (ENVIRONMENT == 'development')
+	{
+		DEFINE ('DB_SGBD', 'mysql');
+		DEFINE ('DB_HOST', 'localhost');
+		DEFINE ('DB_NAME', 'template_php');
+		DEFINE ('DB_USER', 'root');
+		DEFINE ('DB_PASSWORD', '');	
+	}
+	
+	if (ENVIRONMENT == 'test')
+	{
+		DEFINE ('DB_SGBD', 'mysql');
+		DEFINE ('DB_HOST', 'localhost');
+		DEFINE ('DB_NAME', 'template_php');
+		DEFINE ('DB_USER', 'root');
+		DEFINE ('DB_PASSWORD', '');	
+	}
+	
+	if (ENVIRONMENT == 'production')
+	{
+		DEFINE ('DB_SGBD', 'mysql');
+		DEFINE ('DB_HOST', 'localhost');
+		DEFINE ('DB_NAME', 'template_php');
+		DEFINE ('DB_USER', 'root');
+		DEFINE ('DB_PASSWORD', '');	
+	}
+	
 	class Connect
 	{
 		public static $instance;
