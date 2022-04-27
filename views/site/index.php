@@ -14,9 +14,17 @@
 			$this->showMessage(); // Caso hajam msgs elas são mostradas ao usuário
 			?>		
 			
-			<a class="navbar-brand" href="../tools/fdev">Clique aqui para acessar o FDev (Lite).</a>
-			<p><b>Remova o link do FDev (Lite) quando liberar a aplicação para produção.</b></p>
-			<p class="text-danger"><b>Por questões de segurança não é aconselhável fazer upload da pasta do FDev (Lite) para o servidor de produção.</b></p>
+
+			<?php
+				if (ENVIRONMENT == 'development')
+				{ ?>
+				<a class="navbar-brand" href="../tools/fdev">Clique aqui para acessar o FDev (Lite).</a>
+				<p><b>Remova o link do FDev (Lite) quando liberar a aplicação para produção.</b></p>
+				<p class="text-danger"><b>Por questões de segurança não é aconselhável fazer upload da pasta do FDev (Lite) para o servidor de produção.</b></p>
+				<br>
+				<a class="navbar-brand" href="../themes/architectui">Clique aqui para acessar o tema ArchitectUI.</a>
+				<?php }
+			?>			
 
 			<?php
 			// Rodapé comum a todas as páginas

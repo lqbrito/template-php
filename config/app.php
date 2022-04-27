@@ -3,7 +3,11 @@
 	DEFINE ('APP_EMPRESA', 'Nome da empresa');
 	DEFINE ('APP_MENSAGEM', 'Mensagem para o usuário.');
 	DEFINE ('APP_ICONE', 'home');
+	DEFINE ('ENVIRONMENT', 'development');
+	//DEFINE ('ENVIRONMENT', 'test');
+	//DEFINE ('ENVIRONMENT', 'production');
 
+	
 	class App
 	{
 		public static $instance;

@@ -1,7 +1,6 @@
 <?php
 	// Definições padrão para acesso ao banco de dados
-	DEFINE ('ENVIRONMENT', 'development'); // development, test, production
-
+	
 	if (ENVIRONMENT == 'development')
 	{
 		DEFINE ('DB_SGBD', 'mysql');
